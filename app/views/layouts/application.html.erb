@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Blog</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <div class="header">
+      <div class="header-logo">kijinashi-Blog</div>
+        <div class="header-list">
+          <% if user_signed_in? %>
+            <div class="user_nav grid-6">
+              <a class="button" href="/new">新規投稿</a>
+              <%= button_to "ログアウト", destroy_user_session_path, method: :delete, class: 'button' %>
+            </div>
+          <% else %>
+            <%= button_to "ログイン", new_user_session_path, class: 'button' %>
+            <%= button_to "新規登録", new_user_registration_path, method: :get, class: 'button' %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  <body>
+
+  <body>
+    <%= yield %>
+  </body>
+</html>
